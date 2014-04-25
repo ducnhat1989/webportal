@@ -56,15 +56,17 @@ $template['active_template'] = 'default';
 |--------------------------------------------------------------------------
 */
 
-$template['default']['template'] = 'template';
+$template['default']['template'] = 'sb_admin';
 $template['default']['regions'] = array(
-   'header',
-   'sidebar',
-   'footer',
+   'title',
+   'navbar_header',
+   'navbar_top_links',
+   'navbar_static_side',
+   'content',
 );
-// $template['default']['parser'] = 'parser';
-// $template['default']['parser_method'] = 'parse';
-// $template['default']['parse_template'] = FALSE;
+$template['default']['parser'] = 'parser';
+$template['default']['parser_method'] = 'parse';
+$template['default']['parse_template'] = FALSE;
 
 /* End of file template.php */
 /* Location: ./system/application/config/template.php */

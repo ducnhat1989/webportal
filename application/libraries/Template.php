@@ -352,10 +352,9 @@ class CI_Template {
    function write_view($region, $view, $data = NULL, $overwrite = FALSE)
    {
       $args = func_get_args();
-      
+
       // Get rid of non-views
       unset($args[0], $args[2], $args[3]);
-      
       // Do we have more view suggestions?
       if (count($args) > 1)
       {
@@ -369,8 +368,7 @@ class CI_Template {
             }
          }
       }
-      
-      $content = $this->CI->load->view($view, $data, TRUE);
+      $content = $this->CI->load->view("templates/".$this->template["template"]."/".$view, $data, TRUE);
       $this->write($region, $content, $overwrite);
 
    }
@@ -440,7 +438,7 @@ class CI_Template {
       switch ($type)
       {
          case 'import':
-            $filepath = base_url() . $script;
+            $filepath = base_url() . "public/templates/" . $this->template["template"] . "/" . $script;
             $js = '<script type="text/javascript" src="'. $filepath .'"';
             if ($defer)
             {
@@ -495,7 +493,8 @@ class CI_Template {
       $css = NULL;
       
       $this->CI->load->helper('url');
-      $filepath = base_url() . $style;
+
+      $filepath = base_url() . "public/templates/" . $this->template["template"] . "/" . $style;
       
       switch ($type)
       {
