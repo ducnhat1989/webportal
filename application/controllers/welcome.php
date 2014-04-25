@@ -33,9 +33,9 @@ class Welcome extends CI_Controller {
    $this->template->add_js("js/sb-admin.js");
    $this->template->add_js("js/demo/dashboard-demo.js");
 
-   $this->template->write_view("navbar_header","navbar_header");
-   $this->template->write_view("navbar_top_links","navbar_top_links");
-   $this->template->write_view("navbar_static_side","navbar_static_side");
+   $this->template->write_layout("navbar_header","navbar_header");
+   $this->template->write_layout("navbar_top_links","navbar_top_links");
+   $this->template->write_layout("navbar_static_side","navbar_static_side");
  }
 
  public function index()

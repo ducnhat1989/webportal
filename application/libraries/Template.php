@@ -368,6 +368,43 @@ class CI_Template {
             }
          }
       }
+      $content = $this->CI->load->view($view, $data, TRUE);
+      $this->write($region, $content, $overwrite);
+
+   }
+
+   // --------------------------------------------------------------------
+   
+   /**
+   * Write content from a View to a region. 'Views within views'
+   *
+   * @access  public
+   * @param string  region to write to
+   * @param string  view file to use
+   * @param array variables to pass into view
+   * @param boolean FALSE to append to region, TRUE to overwrite region
+   * @return  void
+   */
+   
+   function write_layout($region, $view, $data = NULL, $overwrite = FALSE)
+   {
+      $args = func_get_args();
+
+      // Get rid of non-views
+      unset($args[0], $args[2], $args[3]);
+      // Do we have more view suggestions?
+      if (count($args) > 1)
+      {
+         foreach ($args as $suggestion)
+         {
+            if (file_exists(APPPATH .'views/'. $suggestion . EXT) or file_exists(APPPATH .'views/'. $suggestion))
+            {
+               // Just change the $view arg so the rest of our method works as normal
+               $view = $suggestion;
+               break;
+            }
+         }
+      }
       $content = $this->CI->load->view("templates/".$this->template["template"]."/".$view, $data, TRUE);
       $this->write($region, $content, $overwrite);
 

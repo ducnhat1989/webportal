@@ -59,6 +59,7 @@ $template['active_template'] = 'default';
 $template['default']['template'] = 'sb_admin';
 $template['default']['regions'] = array(
    'title',
+   'login',
    'navbar_header',
    'navbar_top_links',
    'navbar_static_side',

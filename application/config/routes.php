@@ -39,6 +39,7 @@
 */
 
 $route['default_controller'] = "welcome";
+$route['login'] = "session/create";
 $route['404_override'] = '';
 
 
