@@ -17,10 +17,32 @@ class Welcome extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see http://codeigniter.com/user_guide/general/urls.html
 	 */
-	public function index()
-	{
-		$this->load->view('welcome_message');
-	}
+ public function __construct(){
+   parent::__construct();
+   $this->template->add_css("css/bootstrap.min.css");
+   $this->template->add_css("font-awesome/css/font-awesome.css");
+   $this->template->add_css("css/plugins/morris/morris-0.4.3.min.css");
+   $this->template->add_css("css/plugins/timeline/timeline.css");
+   $this->template->add_css("css/sb-admin.css");
+
+   $this->template->add_js("js/jquery-1.10.2.js");
+   $this->template->add_js("js/bootstrap.min.js");
+   $this->template->add_js("js/plugins/metisMenu/jquery.metisMenu.js");
+   $this->template->add_js("js/plugins/morris/raphael-2.1.0.min.js");
+   $this->template->add_js("js/plugins/morris/morris.js");
+   $this->template->add_js("js/sb-admin.js");
+   $this->template->add_js("js/demo/dashboard-demo.js");
+
+   $this->template->write_view("navbar_header","navbar_header");
+   $this->template->write_view("navbar_top_links","navbar_top_links");
+   $this->template->write_view("navbar_static_side","navbar_static_side");
+ }
+
+ public function index()
+ {
+   $this->template->write("title","Welcome",TRUE);
+   $this->template->render(); 
+ }
 }
 
 /* End of file welcome.php */
