@@ -9,7 +9,13 @@
 |	http://codeigniter.com/user_guide/general/hooks.html
 |
 */
-
+//This hook will remove any whitespace in the HTML output.
+$hook['display_override'][] = array(
+    'class' => '',
+    'function' => 'compress',
+    'filename' => 'compress.php',
+    'filepath' => 'hooks'
+    );
 
 
 /* End of file hooks.php */
