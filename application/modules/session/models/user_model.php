@@ -1,15 +1,15 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Users_model extends MY_Model { 
+class User_model extends MY_Model { 
   
-  protected $table = "users";
+  protected $_table = "users";
   protected $primary_key = "id";
   protected $fields = array("id", "username", 
     "password", "email", "fullname", "created_at");
 
   public $before_create = array('timestamps');
 
-  $this->validate = array(
+  public $validate = array(
       array(
          'field'   => 'username',
          'label'   => 'Username',
@@ -23,7 +23,7 @@ class Users_model extends MY_Model {
       array(
          'field'   => 'email',
          'label'   => 'Email',
-         'rules'   => 'trim|email'
+         'rules'   => 'trim|valid_email'
       )
     );
 
@@ -31,9 +31,9 @@ class Users_model extends MY_Model {
     parent::__construct(); 
   } 
 
-  function timestamps($user){
+  protected function timestamps($user){
     // $user['created_at'] = date('Y-m-d H:i:s');
-  	 $user['created_at'] = time();
+    $user['created_at'] = time();
     return $user;
   }
 } 
