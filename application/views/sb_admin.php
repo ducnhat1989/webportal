@@ -10,7 +10,7 @@
    <div id="login">
      <?=$login?>
    </div>
-   <?php if (isset($login)) { echo $_styles; die(); } ?>
+   <?php if ($login) { echo $_styles; die(); } ?>
    <!--regions layout in here-->
    <div id="wrapper">
      <nav class="navbar navbar-default navbar-fixed-top" role="navigation" style="margin-bottom: 0">
